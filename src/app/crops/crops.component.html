@@ -1,0 +1,27 @@
+<div class="edit-page">
+    <nav aria-label="breadcrumb" >
+        <ul class="breadcrumb" style="background-color: rgb(183, 218, 183);">
+            <li class="breadcrumb-item" aria-current="page">
+                <h3 style="color: rgb(0, 99, 0); font-weight: bold;">
+                    <mat-icon style="color: rgb(0, 99, 0)">local_florist</mat-icon>
+                    КУЛТУРИ
+                </h3>
+            </li>
+            <li class="breadcrumb-item">
+                <a mat-raised-button routerLink="all" class="fa fa-edit btn btn-info">
+                    <mat-icon>list</mat-icon>
+                    ВСИЧКИ
+                </a>
+            </li>
+            <li class="breadcrumb-item">
+                <a mat-raised-button routerLink="add" class="fa fa-edit btn btn-secondary">
+                    <mat-icon>add</mat-icon>
+                    ДОБАВИ
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="page-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>
