@@ -1,0 +1,55 @@
+.filter-by-age {
+    color: #6c757d;
+  
+    .title {
+      align-self: center;
+    }
+  
+    .age-slider {
+      width: 85%;
+    }
+  }
+  
+  .users-list {
+    padding: 40px 60px;
+  
+    .image-col {
+      text-align:center;
+  
+      .image {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .text-col {
+      margin: auto 0px;
+    }
+    .actions-col {
+      text-align: center;
+      margin: auto 0px;
+  
+      .action {
+        line-height: 1;
+      }
+      .icon {
+        font-size: 20px;
+      }
+    }
+  }
+
+.id{
+  width: 3%;
+}
+
+.name{
+  width: 60%;
+}
+
+.country{
+  width: 25%;
+}
+
+tr {
+  border-bottom: 1px solid grey;
+}

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { map } from 'rxjs/operators';
+import { Router, Params } from '@angular/router';
+// import { AngularFirestore } from '@angular/fire/firestore';
+// import { map } from 'rxjs/operators';
+
+import { FirebaseService } from '../../services/firebase.service';
+import { FirmService } from '../firm.service';
+import { Firm } from '../../common/models/Firm';
 
 @Component({
   templateUrl: './all-firms.component.html',
@@ -8,30 +13,47 @@ import { map } from 'rxjs/operators';
 })
 export class AllFirmsComponent implements OnInit {
 
-  constructor(private db: AngularFirestore) { }
+  items: Firm[];
+  nameTable: 'manufacturers';
+  firms: Firm[];
+  error = '';
+  success = '';
+
+  constructor(
+    private router: Router,
+    public firebaseService: FirebaseService,
+    public apiService: FirmService,
+    // private db: AngularFirestore,
+  ) { }
+
 
   ngOnInit() {
-    this.db.collection('firms')
-      .snapshotChanges()
-      .pipe(
-        map(docArray => {
-          console.log(docArray);
-          return docArray.map(doc => {
-            return {
-              id: doc.payload.doc.id,
-              ...doc.payload.doc.data()
-            };
-          });
-        })
-      )
-      .subscribe( result => {
-        console.log(result);
-        // for ( const res of result ) {
-        //   console.log(res.payload.doc.data());
-        // }
-    });
-
-
+    this.getAllData();
   }
 
+  getAllData() {
+    this.firebaseService.getAllDataFromTable('manufacturers')
+    .subscribe(result => {
+      this.items = result;
+    });
+
+    // this.apiService.getAll().subscribe(
+    //   (res: Firm[]) => {
+    //     this.firms = res;
+    //     console.log(res);
+    //   },
+    //   (err) => {
+    //     this.error = err;
+    //     console.log(err);
+    //   }
+    // );
+  }
+
+  viewDetails(item: any) {
+    this.router.navigate(['/firms/details/' + item.payload.doc.id]);
+  }
+
+  editFirmDetails(item: any) {
+    this.router.navigate(['/firms/edit/' + item.payload.doc.id]);
+  }
 }

@@ -1,3 +1,33 @@
-<p>
-  all-firms works!
-</p>
+
+<div class="list-group users-list">
+  <table>
+    <thead>
+      <tr>
+          <th>Edit</th>
+          <th class="id">N</th>
+          <th class="id">ID</th>
+          <th class="name">Име</th>
+          <th class="country">Страна</th>
+          <th>Виж</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items; let i = index;" >
+        <td> 
+          <button class="btn btn-outline-danger action" (click)="editFirmDetails(item)" type="button">
+              <ion-icon class="icon" name="create"></ion-icon>
+          </button>
+        </td>
+        <td class="id">{{ i + 1 }}</td>
+        <td class="id">{{item.payload.doc.data().db_id}}</td>
+        <td class="name">{{item.payload.doc.data().name}}</td>
+        <td class="country">{{item.payload.doc.data().country}}</td>
+        <td> 
+          <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">
+            <ion-icon class="icon" name="arrow-round-forward"></ion-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

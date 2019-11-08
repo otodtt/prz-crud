@@ -49,4 +49,28 @@ export class FirebaseService {
       avatar: avatar
     });
   }
+
+  // МОИ
+  getAllDataFromTable(nameTable: string) {
+    return this.db.collection(nameTable).snapshotChanges();
+  }
+
+  getDataFromTable(userKey: any, nameTable: string) {
+    return this.db.collection(nameTable).doc(userKey).snapshotChanges();
+  }
+
+  updateData(userKey: any, value: any, tableName: string) {
+    value.nameToSearch = value.name.toLowerCase();
+    return this.db.collection(tableName).doc(userKey).set(value);
+  }
+
+  // createData( value: any, tableName: string) {
+  //   return this.db.collection(tableName).add({
+  //     name: value.name,
+  //     nameToSearch: value.name.toLowerCase(),
+  //     country: value.surname,
+  //     age: parseInt(value.age, 100),
+  //     avatar: avatar
+  //   });
+  // }
 }

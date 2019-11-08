@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
       this.items = result;
       this.age_filtered_items = result;
       this.name_filtered_items = result;
+      // console.log(this.items);
     });
   }
 
@@ -37,7 +38,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/details/' + item.payload.doc.id]);
   }
 
-  capitalizeFirstLetter(value) {
+  capitalizeFirstLetter( value: any ) {
     return value.charAt(0).toUpperCase() + value.slice(1);
   }
 
