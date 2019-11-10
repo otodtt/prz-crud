@@ -64,13 +64,13 @@ export class FirebaseService {
     return this.db.collection(tableName).doc(userKey).set(value);
   }
 
-  // createData( value: any, tableName: string) {
-  //   return this.db.collection(tableName).add({
-  //     name: value.name,
-  //     nameToSearch: value.name.toLowerCase(),
-  //     country: value.surname,
-  //     age: parseInt(value.age, 100),
-  //     avatar: avatar
-  //   });
-  // }
+  createData( value: any, tableName: string) {
+    return this.db.collection(tableName).add(value);
+    // return this.db.collection(tableName).add({
+    //   name: value.name,
+    //   nameToSearch: value.name.toLowerCase(),
+    //   country: value.surname,
+    //   age: parseInt(value.age, 100),
+    // });
+  }
 }

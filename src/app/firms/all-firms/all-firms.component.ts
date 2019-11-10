@@ -13,6 +13,7 @@ import { Firm } from '../../common/models/Firm';
 })
 export class AllFirmsComponent implements OnInit {
 
+  // items: any;
   items: Firm[];
   nameTable: 'manufacturers';
   firms: Firm[];
@@ -28,32 +29,35 @@ export class AllFirmsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getAllData();
+    // this.getAllData();
+    this.getAllFirms();
   }
+
+  //// NEW TEST
+  getAllFirms () {
+    this.apiService.getFirms().subscribe( res => {
+      this.items = res;
+      // console.log(this.items);
+    });
+  }
+  //// END NEW TEST
+
 
   getAllData() {
     this.firebaseService.getAllDataFromTable('manufacturers')
-    .subscribe(result => {
-      this.items = result;
+      .subscribe(result => {
+        this.items = result;
+        // console.log(this.items);
     });
-
-    // this.apiService.getAll().subscribe(
-    //   (res: Firm[]) => {
-    //     this.firms = res;
-    //     console.log(res);
-    //   },
-    //   (err) => {
-    //     this.error = err;
-    //     console.log(err);
-    //   }
-    // );
   }
 
   viewDetails(item: any) {
-    this.router.navigate(['/firms/details/' + item.payload.doc.id]);
+    // this.router.navigate(['/firms/details/' + item.payload.doc.id]);
+    this.router.navigate(['/firms/details/' + item.id]);
   }
 
   editFirmDetails(item: any) {
-    this.router.navigate(['/firms/edit/' + item.payload.doc.id]);
+    // this.router.navigate(['/firms/edit/' + item.payload.doc.id]);
+    this.router.navigate(['/firms/edit/' + item.id]);
   }
 }

@@ -21,7 +21,7 @@ export class AddFirmsComponent implements OnInit {
   success = '';
 
   // firm = new Firm('', '', '', 0, '');
-  // firm: Firm[]  = [];
+  // firm: Firm[] = [];
 
   exampleForm: FormGroup;
 
@@ -62,57 +62,37 @@ export class AddFirmsComponent implements OnInit {
     });
   }
 
-  onSubmit( value: any ) {
-    const alphabet = this.fls.getFirstLetterOfName(value.name);
+  onSubmit(value: any) {
+    this.addFirmToDB(value);
+  }
 
-    // console.log(this.firm);
-    // const firm_f = this.firm({
-    //   name = value.name,
-    //   nameToSearch = value.name.toLowerCase(),
-    //   country = value.country,
-    //   alphabet = alphabet
-    // })
-    // this.firm.name = value.name;
-    // this.resetErrors();
-    const firm: Firm[] = [
-      {
-        name: value.name,
-        nameToSearch: value.name.toLowerCase(),
-        country: value.country,
-        alphabet: alphabet
-      }
-    ];
 
-    this.firmService.store(firm)
+  addFirmToDB(value: any) {
+    value.alphabet = this.fls.getFirstLetterOfName(value.name);
+    value.nameToSearch = value.name.toLowerCase();
+
+    this.firmService.addFirm(value)
       .subscribe(
-        (res: Firm[]) => {
-          console.log(this.firms);
-          console.log(res);
+        (res: any) => {
           // Update the list of cars
           this.firms = res;
-
+          console.log(res.id);
           // Inform the user
           this.success = 'Created successfully';
 
           // Reset the form
-          // value.reset();
+          this.resetFields();
+          this.resetErrors();
+
+          // add to firebase
+          this.addFirmToFirebase(value);
         },
         (err) => this.error = err
       );
+  }
 
-    // const alphabet = this.fls.getFirstLetterOfName(value.name);
-    // this.db.collection('manufacturers').add({
-    //   name: value.name,
-    //   nameToSearch: value.name.toLowerCase(),
-    //   country: value.country,
-    //   alphabet: alphabet
-    // })
-    // .then(
-    //   res => {
-    //     this.resetFields();
-    //     this.router.navigate(['/firms']);
-    //   }
-    // );
+  addFirmToFirebase(value: any) {
+
   }
 
   private resetErrors() {

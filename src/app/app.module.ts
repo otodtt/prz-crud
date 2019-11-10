@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModul } from './app-routing.module';
 
@@ -20,6 +21,8 @@ import { environment } from '../environments/environment';
 
 import { FirebaseService } from './services/firebase.service';
 import { FirstLetterService } from './services/first.letter.service';
+import { HttpErrorHandler } from './services/http-error-handler.service';
+import { MessageService } from './services/message.service';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -57,11 +60,13 @@ import {
     MatDialogModule,
     MatIconModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     FirebaseService,
     FirstLetterService,
+    HttpErrorHandler,
+    MessageService,
     { provide: FirestoreSettingsToken, useValue: {} },
     EditUserResolver],
   bootstrap: [AppComponent],
