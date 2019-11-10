@@ -11,7 +11,7 @@ export class DetailFirmResolver implements Resolve<any> {
 
     return new Promise((resolve, reject) => {
       const firmId = route.paramMap.get('id');
-      this.firebaseService.getDataFromTable(firmId, 'manufacturers')
+      this.firebaseService.getDataFromFirebaseTable(firmId, 'manufacturers')
       .subscribe(
         data => {
           resolve(data);

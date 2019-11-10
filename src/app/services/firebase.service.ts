@@ -51,15 +51,15 @@ export class FirebaseService {
   }
 
   // МОИ
-  getAllDataFromTable(nameTable: string) {
+  getAllDataFromFirebaseTable(nameTable: string) {
     return this.db.collection(nameTable).snapshotChanges();
   }
 
-  getDataFromTable(userKey: any, nameTable: string) {
+  getDataFromFirebaseTable(userKey: any, nameTable: string) {
     return this.db.collection(nameTable).doc(userKey).snapshotChanges();
   }
 
-  updateData(userKey: any, value: any, tableName: string) {
+  updateFirebaseData(userKey: any, value: any, tableName: string) {
     value.nameToSearch = value.name.toLowerCase();
     return this.db.collection(tableName).doc(userKey).set(value);
   }

@@ -59,14 +59,22 @@ export class FirmService {
 
 
 
-  getAll(): Observable<Firm[]> {
-    return this.http.get(`${this.baseUrl}firm/list`).pipe(
-      map((res) => {
-        this.firms = res['data'];
-        return this.firms;
-    }),
-    catchError(this.handleErrorFirst));
-  }
+  // getAll(): Observable<Firm[]> {
+  //   return this.http.get(`${this.baseUrl}firm/list`).pipe(
+  //     map((res) => {
+  //       this.firms = res['data'];
+  //       return this.firms;
+  //   }),
+  //   catchError(this.handleErrorFirst));
+  // }
+  // getAll(): Observable<Firm[]> {
+  //   return this.http.get(`${this.baseUrl}firm/list`).pipe(
+  //     map((res) => {
+  //       this.firms = res['data'];
+  //       return this.firms;
+  //   }),
+  //   catchError(this.handleErrorFirst));
+  // }
 
 //   store(car: Firm): Observable<Firm[]> {
 //     return this.http.post(`${this.baseUrl}firm/store`, { data: car })

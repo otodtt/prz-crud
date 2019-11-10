@@ -1,6 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-// import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { FirebaseService } from '../services/firebase.service';
@@ -39,7 +38,6 @@ import { EditFirmComponent } from './edit-firm/edit-firm.component';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    // BrowserAnimationsModule,
   ],
   providers: [
     FirebaseService,

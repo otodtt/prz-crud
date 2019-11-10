@@ -29,12 +29,12 @@ export class AllFirmsComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.getAllData();
-    this.getAllFirms();
+    // this.getAllFromFirebase();
+    this.getAllFirmsDB();
   }
 
   //// NEW TEST
-  getAllFirms () {
+  getAllFirmsDB () {
     this.apiService.getFirms().subscribe( res => {
       this.items = res;
       // console.log(this.items);
@@ -43,8 +43,8 @@ export class AllFirmsComponent implements OnInit {
   //// END NEW TEST
 
 
-  getAllData() {
-    this.firebaseService.getAllDataFromTable('manufacturers')
+  getAllFromFirebase() {
+    this.firebaseService.getAllDataFromFirebaseTable('manufacturers')
       .subscribe(result => {
         this.items = result;
         // console.log(this.items);
