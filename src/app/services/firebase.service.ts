@@ -51,8 +51,14 @@ export class FirebaseService {
   }
 
   // МОИ
+  // getAllDataFromFirebaseTable(nameTable: string) {
+  //   return this.db.collection(nameTable).snapshotChanges();
+  // }
+
   getAllDataFromFirebaseTable(nameTable: string) {
-    return this.db.collection(nameTable).snapshotChanges();
+    return this.db.collection(nameTable, ref => ref.where('isActive', '==', 0)
+      .where('isActive', '==', 0 ))
+      .snapshotChanges();
   }
 
   getDataFromFirebaseTable(userKey: any, nameTable: string) {
@@ -64,13 +70,20 @@ export class FirebaseService {
     return this.db.collection(tableName).doc(userKey).set(value);
   }
 
-  createData( value: any, tableName: string) {
-    return this.db.collection(tableName).add(value);
-    // return this.db.collection(tableName).add({
-    //   name: value.name,
-    //   nameToSearch: value.name.toLowerCase(),
-    //   country: value.surname,
-    //   age: parseInt(value.age, 100),
-    // });
+  getNotActiveFromFirebaseTable(nameTable: string) {
+    return this.db.collection(nameTable, ref => ref.where('isActive', '>=', 1)
+    .where('isActive', '>=', 1 ))
+    .snapshotChanges();
+  }
+
+  addFirmToFirebaseManufacturers(value: any) {
+    return this.db.collection('manufacturers').add({
+      name: value.name,
+      nameToSearch: value.name.toLowerCase(),
+      country: value.country,
+      alphabet: value.alphabet,
+      isActive: 0,
+      db_id: value.id,
+    });
   }
 }

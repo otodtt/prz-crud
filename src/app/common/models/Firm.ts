@@ -5,5 +5,6 @@ export class Firm {
       country: string,
       alphabet: string,
       nameToSearch?: string,
+      isActive?: number,
     ) {}
   }

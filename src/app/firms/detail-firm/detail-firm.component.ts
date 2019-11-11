@@ -23,8 +23,8 @@ export class DetailFirmComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.detailsFromFirebase();
-    this.detailsFromDB();
+    this.detailsFromFirebase();
+    // this.detailsFromDB();
   }
 
   detailsFromFirebase() {

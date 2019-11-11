@@ -31,7 +31,7 @@ import {
   MatSliderModule,
   MatDialogModule,
   MatIconModule,
-  MatListModule
+  MatListModule,
 } from '@angular/material';
 
 

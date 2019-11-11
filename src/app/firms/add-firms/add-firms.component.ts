@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 
@@ -20,9 +19,6 @@ export class AddFirmsComponent implements OnInit {
   error = '';
   success = '';
 
-  // firm = new Firm('', '', '', 0, '');
-  // firm: Firm[] = [];
-
   exampleForm: FormGroup;
 
   validation_messages = {
@@ -36,7 +32,6 @@ export class AddFirmsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    public dialog: MatDialog,
     private router: Router,
     public firebaseService: FirebaseService,
     public fls: FirstLetterService,
@@ -70,29 +65,32 @@ export class AddFirmsComponent implements OnInit {
   addFirmToDB(value: any) {
     value.alphabet = this.fls.getFirstLetterOfName(value.name);
     value.nameToSearch = value.name.toLowerCase();
+    value.isActive = 0;
 
     this.firmService.addFirm(value)
       .subscribe(
         (res: any) => {
-          // Update the list of cars
+          // Update the list of firms
           this.firms = res;
-          console.log(res.id);
-          // Inform the user
-          this.success = 'Created successfully';
-
-          // Reset the form
-          this.resetFields();
-          this.resetErrors();
-
           // add to firebase
-          this.addFirmToFirebase(value);
+          this.addFirmToFirebase(res);
+
+          // Inform the user
+          // this.success = 'Created successfully';
         },
         (err) => this.error = err
       );
   }
 
   addFirmToFirebase(value: any) {
-
+    this.firebaseService.addFirmToFirebaseManufacturers(value)
+      .then(
+        res => {
+          this.resetFields();
+          this.resetErrors();
+          this.router.navigate(['/firms/all']);
+      }
+    );
   }
 
   private resetErrors() {

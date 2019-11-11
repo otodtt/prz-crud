@@ -12,7 +12,7 @@ import {
   MatSliderModule,
   MatDialogModule,
   MatIconModule,
-  MatListModule
+  MatListModule,
 } from '@angular/material';
 
 import { FirmsRoutingModule } from './firms-routing.module';
@@ -22,6 +22,7 @@ import { DetailFirmComponent } from './detail-firm/detail-firm.component';
 import { DetailFirmResolver } from './detail-firm/detail-firm.resolver';
 import { AddFirmsComponent } from './add-firms/add-firms.component';
 import { EditFirmComponent } from './edit-firm/edit-firm.component';
+import { NotActiveComponent } from './not-active/not-active.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { EditFirmComponent } from './edit-firm/edit-firm.component';
     AllFirmsComponent,
     AddFirmsComponent,
     DetailFirmComponent,
-    EditFirmComponent
+    EditFirmComponent,
+    NotActiveComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,7 @@ import { EditFirmComponent } from './edit-firm/edit-firm.component';
     MatButtonModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
   ],
   providers: [
     FirebaseService,

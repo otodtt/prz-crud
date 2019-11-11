@@ -19,21 +19,17 @@
           </button>
         </td>
         <td class="id">{{ i + 1 }}</td>
-        <!-- FROM MySQL -->
-        <!-- <td class="id">{{item.id}}</td>
-        <td class="name">{{item.name}}</td>
-        <td class="country">{{item.country}}</td> -->
-        <!-- END FROM MySQL -->
 
         <td class="id">{{item.payload.doc.data().db_id}}</td>
-        <td class="name">{{ item.payload.doc.data().name}}</td>
-        <td class="country">{{ item.payload.doc.data().country}}</td>
+        <td class="name">{{item.payload.doc.data().name}}</td>
+        <td class="country">{{item.payload.doc.data().country}}</td>
         <td>
           <button class="btn btn-outline-primary action" (click)="viewDetails(item)" type="button">
             <ion-icon class="icon" name="arrow-round-forward"></ion-icon>
           </button>
         </td>
-      </tr> 
+      </tr>
     </tbody>
   </table>
 </div>
+

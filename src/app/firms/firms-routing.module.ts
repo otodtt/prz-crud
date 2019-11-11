@@ -7,6 +7,7 @@ import { AddFirmsComponent } from './add-firms/add-firms.component';
 import { DetailFirmComponent } from './detail-firm/detail-firm.component';
 import { DetailFirmResolver } from './detail-firm/detail-firm.resolver';
 import { EditFirmComponent } from './edit-firm/edit-firm.component';
+import { NotActiveComponent } from './not-active/not-active.component';
 
 
 
@@ -17,6 +18,7 @@ export const routes: Routes = [
     { path: 'details/:id', component: DetailFirmComponent, resolve: { data : DetailFirmResolver} },
     { path: 'edit/:id', component: EditFirmComponent, resolve: { data : DetailFirmResolver} },
     { path: 'add', component: AddFirmsComponent },
+    { path: 'not-active', component: NotActiveComponent },
   ]}
 ];
 

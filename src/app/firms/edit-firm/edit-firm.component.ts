@@ -38,8 +38,8 @@ export class EditFirmComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.detailsFromFirebase();
-    this.detailsFromDB();
+    this.detailsFromFirebase();
+    // this.detailsFromDB();
   }
 
   detailsFromFirebase() {
@@ -71,25 +71,35 @@ export class EditFirmComponent implements OnInit {
     this.exampleForm = this.fb.group({
       name: [this.item.name.trim(), Validators.required],
       country: [this.item.country.trim(), Validators.required],
+      isActive: [this.item.isActive],
     });
   }
 
   onSubmit(value: any) {
-     // ОТ FIREBASE
-    // value.alphabet = this.fls.getFirstLetterOfName(value.name);
-    // this.firebaseService.updateData(this.item.id, value, 'manufacturers')
-    // .then(
-    //   res => {
-    //     this.router.navigate(['/firms']);
-    //   }
-    // );
+    this.editFirmInDatabase(value);
+    // this.editFirmInFirebace(value);
+  }
 
+  editFirmInFirebace(value: any) {
+    value.alphabet = this.fls.getFirstLetterOfName(value.name);
+    value.isActive = +value.isActive;
+    value.db_id = +this.item.db_id;
+    // console.log(value);
+    this.firebaseService.updateFirebaseData(this.item.id, value, 'manufacturers')
+    .then(
+      res => {
+        this.router.navigate(['/firms/all']);
+      }
+    );
+  }
 
+  editFirmInDatabase(value: any) {
     value.alphabet = this.fls.getFirstLetterOfName(value.name);
     value.nameToSearch = value.name.toLowerCase();
-    this.firmService.updateFirm(this.item.id, value).subscribe(res => {
-      // console.log(res);
-      this.router.navigate(['/firms/all']);
+    value.isActive = +value.isActive;
+    this.firmService.updateFirm(this.item.db_id, value).subscribe(res => {
+      this.editFirmInFirebace(value);
+      // this.router.navigate(['/firms/all']);
     });
   }
 
