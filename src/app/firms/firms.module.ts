@@ -6,6 +6,8 @@ import { FirebaseService } from '../services/firebase.service';
 import { FirstLetterService } from '../services/first.letter.service';
 import { FirmService } from './firm.service';
 
+import { PreventDoubleSubmitModule } from 'ngx-prevent-double-submission';
+
 import {
   MatButtonModule,
   MatInputModule,
@@ -24,6 +26,7 @@ import { AddFirmsComponent } from './add-firms/add-firms.component';
 import { EditFirmComponent } from './edit-firm/edit-firm.component';
 import { NotActiveComponent } from './not-active/not-active.component';
 
+
 @NgModule({
   declarations: [
     FirmsComponent,
@@ -31,7 +34,7 @@ import { NotActiveComponent } from './not-active/not-active.component';
     AddFirmsComponent,
     DetailFirmComponent,
     EditFirmComponent,
-    NotActiveComponent
+    NotActiveComponent,
   ],
   imports: [
     CommonModule,

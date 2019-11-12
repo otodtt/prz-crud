@@ -56,7 +56,7 @@ export class FirebaseService {
   // }
 
   getAllDataFromFirebaseTable(nameTable: string) {
-    return this.db.collection(nameTable, ref => ref.where('isActive', '==', 0)
+    return this.db.collection(nameTable, ref => ref.orderBy('db_id', 'asc').where('isActive', '==', 0)
       .where('isActive', '==', 0 ))
       .snapshotChanges();
   }

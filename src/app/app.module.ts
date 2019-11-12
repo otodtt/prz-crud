@@ -33,8 +33,6 @@ import {
   MatIconModule,
   MatListModule,
 } from '@angular/material';
-
-
 @NgModule({
   declarations: [
     AppComponent,
