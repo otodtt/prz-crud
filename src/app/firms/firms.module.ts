@@ -6,7 +6,7 @@ import { FirebaseService } from '../services/firebase.service';
 import { FirstLetterService } from '../services/first.letter.service';
 import { FirmService } from './firm.service';
 
-import { PreventDoubleSubmitModule } from 'ngx-prevent-double-submission';
+// import { PreventDoubleSubmitModule } from 'ngx-prevent-double-submission';
 
 import {
   MatButtonModule,

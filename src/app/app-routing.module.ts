@@ -25,13 +25,13 @@ export const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [SecureInnerPagesGuard] },
   { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [SecureInnerPagesGuard] },
   // { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'new-user', component: NewUserComponent },
-  { path: 'details/:id', component: EditUserComponent, resolve: { data : EditUserResolver} },
-  { path: 'firms', loadChildren: './firms/firms.module#FirmsModule'},
-  { path: 'products', loadChildren: './products/products.module#ProductsModule'},
-  { path: 'crops', loadChildren: './crops/crops.module#CropsModule'},
-  { path: 'substsnces', loadChildren: './substances/substances.module#SubstancesModule'},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'new-user', component: NewUserComponent, canActivate: [AuthGuard] },
+  { path: 'details/:id', component: EditUserComponent, resolve: { data: EditUserResolver }, canActivate: [AuthGuard] },
+  { path: 'firms', loadChildren: './firms/firms.module#FirmsModule', canActivate: [AuthGuard]},
+  { path: 'products', loadChildren: './products/products.module#ProductsModule', canActivate: [AuthGuard]},
+  { path: 'crops', loadChildren: './crops/crops.module#CropsModule', canActivate: [AuthGuard]},
+  { path: 'substsnces', loadChildren: './substances/substances.module#SubstancesModule', canActivate: [AuthGuard]},
 ];
 
 @NgModule({

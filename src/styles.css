@@ -2,14 +2,14 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~bootstrap/dist/css/bootstrap.css";
 
-/* body {
+body {
    margin: 0;
    background: #F2F2F2;
    height: 100vh;
-} */
+}
 
 
-@import 'https://use.fontawesome.com/releases/v5.5.0/css/all.css';
+/* @import 'https://use.fontawesome.com/releases/v5.5.0/css/all.css'; */
 
 * {
   -webkit-box-sizing: border-box;
