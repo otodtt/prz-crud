@@ -8,3 +8,13 @@
       </div>
     </div>
 </div>
+<hr/>
+<div class="list-group users-list">
+  <div class="row">
+    <div class="col col-md-12 text-col ">
+      <ol>
+        <li  *ngFor="let product of products; let i = index;" >{{ product.payload.doc.data().name}}</li>
+      </ol>
+    </div>
+  </div>
+</div>

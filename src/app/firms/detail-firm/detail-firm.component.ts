@@ -13,6 +13,7 @@ export class DetailFirmComponent implements OnInit {
 
   // item: any;
   item: any = [];
+  products: any = [];
 
   constructor(
     public firebaseService: FirebaseService,
@@ -25,6 +26,8 @@ export class DetailFirmComponent implements OnInit {
   ngOnInit() {
     this.detailsFromFirebase();
     // this.detailsFromDB();
+
+    this.getProductsForThisFirm();
   }
 
   detailsFromFirebase() {
@@ -51,6 +54,16 @@ export class DetailFirmComponent implements OnInit {
           // console.log(this.item);
         }
       );
+  }
+
+  getProductsForThisFirm() {
+    // console.log(this.item);
+    this.firebaseService.getProductsForFirm(this.item.db_id, 'acaricides')
+        .subscribe( res => {
+          this.products = res;
+          // console.log(res);
+        });
+
   }
 
 }

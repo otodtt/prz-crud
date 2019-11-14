@@ -86,4 +86,12 @@ export class FirebaseService {
       db_id: value.id,
     });
   }
+
+
+  getProductsForFirm(userKey: any, nameTable: string) {
+    return this.db.collection(nameTable, ref => ref.where('isActive', '>=', 0)
+    .where('isActive', '==', 0 )
+    .where('manufacturersId', '==', userKey ))
+    .snapshotChanges();
+  }
 }
