@@ -49,7 +49,7 @@ export class FirmService {
   updateFirm (id: number, firm: Firm[] ): Observable<Firm> {
     return this.http
       .put<Firm>(`${this.baseUrl}firm/update/${id}`, firm)
-      .pipe(catchError(this.handleError('addFirm', firm)));
+      .pipe(catchError(this.handleError('updateFirm', firm)));
   }
 
   /////////////// FIRST TEST

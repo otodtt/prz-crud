@@ -55,9 +55,16 @@ export class FirebaseService {
   //   return this.db.collection(nameTable).snapshotChanges();
   // }
 
+
+  /** тази функция да се ползва за продукшъна */
+  // getAllDataFromFirebaseTable(nameTable: string) {
+  //   return this.db.collection(nameTable, ref => ref.orderBy('db_id', 'asc').where('isActive', '==', 0)
+  //     .where('isActive', '==', 0 ))
+  //     .snapshotChanges();
+  // }
+
   getAllDataFromFirebaseTable(nameTable: string) {
-    return this.db.collection(nameTable, ref => ref.orderBy('db_id', 'asc').where('isActive', '==', 0)
-      .where('isActive', '==', 0 ))
+    return this.db.collection(nameTable, ref => ref.orderBy('db_id', 'asc'))
       .snapshotChanges();
   }
 
@@ -71,8 +78,7 @@ export class FirebaseService {
   }
 
   getNotActiveFromFirebaseTable(nameTable: string) {
-    return this.db.collection(nameTable, ref => ref.where('isActive', '>=', 1)
-    .where('isActive', '>=', 1 ))
+    return this.db.collection(nameTable, ref => ref.where('isActive', '>=', 1 ))
     .snapshotChanges();
   }
 
@@ -89,7 +95,7 @@ export class FirebaseService {
 
 
   getProductsForFirm(userKey: any, nameTable: string) {
-    return this.db.collection(nameTable, ref => ref.where('isActive', '>=', 0)
+    return this.db.collection(nameTable, ref => ref
     .where('isActive', '==', 0 )
     .where('manufacturersId', '==', userKey ))
     .snapshotChanges();

@@ -31,7 +31,7 @@ export const routes: Routes = [
   { path: 'firms', loadChildren: './firms/firms.module#FirmsModule', canActivate: [AuthGuard]},
   { path: 'products', loadChildren: './products/products.module#ProductsModule', canActivate: [AuthGuard]},
   { path: 'crops', loadChildren: './crops/crops.module#CropsModule', canActivate: [AuthGuard]},
-  { path: 'substsnces', loadChildren: './substances/substances.module#SubstancesModule', canActivate: [AuthGuard]},
+  { path: 'substances', loadChildren: './substances/substances.module#SubstancesModule', canActivate: [AuthGuard]},
 ];
 
 @NgModule({
